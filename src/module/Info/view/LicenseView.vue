@@ -93,8 +93,6 @@ const handleExceedUpload = (files) => {
   upload.value.handleStart(file);
 };
 const handChangeUpload = (files) => {
-  console.log("handChangeUpload");
-  console.log(files);
   fileImport.value = files.raw;
 };
 

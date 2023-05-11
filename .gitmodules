@@ -13,6 +13,6 @@
 [submodule "src/module/gatewayCellular"]
 	path = src/module/gatewayCellular
 	url = git@github.com:anhtdqATS/gatewayCellular.git
-[submodule "src/module/smartDer"]
-	path = src/module/smartDer
-	url = git@github.com:anhtdqATS/smartDer.git
+[submodule "src/module/MDV3"]
+	path = src/module/MDV3
+	url = git@github.com:anhtdqATS/MDV3.git

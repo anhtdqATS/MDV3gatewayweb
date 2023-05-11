@@ -21,7 +21,10 @@ const styleStore = useStyleStore(pinia);
 /* Fetch sample data */
 // mainStore.fetch("clients");
 // mainStore.fetch("history");
-
+// const nameDevice = computed(() => {
+//   console.log(mainStore.nameGateway);
+//   return mainStore.nameGateway.value;
+// });
 /* App style */
 styleStore.setStyle(localStorage[styleKey] ?? "basic");
 
@@ -35,11 +38,5 @@ if (
 }
 
 /* Default title tag */
-const defaultDocumentTitle = "ATS SmartDER";
 
 /* Set document title from route meta */
-router.afterEach((to) => {
-  document.title = to.meta?.title
-    ? `${to.meta.title} — ${defaultDocumentTitle}`
-    : defaultDocumentTitle;
-});

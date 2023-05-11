@@ -20,8 +20,7 @@ const routes = [
     },
     path: "/dashboard",
     name: "dashboard",
-    component: () =>
-      import("@/module/smartDer/dashboard/view/DashboardView.vue"),
+    component: () => import("@/module/MDV3/dashboard/view/DashboardView.vue"),
   },
   {
     meta: {
@@ -78,7 +77,7 @@ const routes = [
     },
     path: "/network",
     name: "network",
-    component: () => import("@/module/smartDer/network/view/NetworkView.vue"),
+    component: () => import("@/module/MDV3/network/view/NetworkView.vue"),
   },
   {
     meta: {
@@ -94,7 +93,7 @@ const routes = [
     },
     path: "/system",
     name: "system",
-    component: () => import("@/module/smartDer/system/view/SystemView.vue"),
+    component: () => import("@/module/MDV3/system/view/SystemView.vue"),
   },
 
   {
@@ -104,7 +103,7 @@ const routes = [
     path: "/import-export",
     name: "import-export",
     component: () =>
-      import("@/module/smartDer/importExport/view/ImportExportView.vue"),
+      import("@/module/MDV3/importExport/view/ImportExportView.vue"),
   },
   {
     meta: {
@@ -113,7 +112,7 @@ const routes = [
     path: "/update-firmware",
     name: "updateFirmware",
     component: () =>
-      import("@/module/smartDer/updateFirmware/view/updateFirmware.vue"),
+      import("@/module/MDV3/updateFirmware/view/updateFirmware.vue"),
   },
   {
     meta: {
@@ -132,7 +131,14 @@ const routes = [
     name: "Forwarder",
     component: () => import("@/module/forwarder/view/ForwarderView.vue"),
   },
-
+  {
+    meta: {
+      title: "Comport",
+    },
+    path: "/comport",
+    name: "Comport",
+    component: () => import("@/module/MDV3/comport/view/comport.vue"),
+  },
   {
     meta: {
       title: "About",
@@ -170,6 +176,21 @@ router.beforeEach(async (to, from, next) => {
 
 router.afterEach((to, from) => {
   useMainStore().setLoading(false);
+});
+
+router.afterEach((to) => {
+  const defaultDocumentTitle = localStorage.getItem("nameGateway");
+  if (defaultDocumentTitle === null) {
+    document.title = "ATS MDV3";
+  } else {
+    if (defaultDocumentTitle === "") {
+      document.title = "ATS MDV3 - " + to.meta.title;
+    } else {
+      document.title = to.meta?.title
+        ? `${defaultDocumentTitle} - ${to.meta.title}`
+        : defaultDocumentTitle;
+    }
+  }
 });
 
 export default router;

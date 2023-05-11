@@ -103,6 +103,11 @@ export default [
     menu: [
       {
         permissions: ["admin", "engineer"],
+        to: "/comport",
+        label: "COM Ports",
+      },
+      {
+        permissions: ["admin", "engineer"],
         to: "/system",
         label: "System",
       },
