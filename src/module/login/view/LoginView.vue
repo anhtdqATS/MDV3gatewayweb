@@ -8,7 +8,6 @@ import loginApi from "../api/loginApi";
 import { User, Lock } from "@element-plus/icons-vue";
 const mainStore = useMainStore();
 const router = useRouter();
-console.log(mainStore, "login");
 //declare variable
 const loginForm = reactive({
   user: null,
@@ -94,49 +93,55 @@ const openNotification = (err) => {
 <template>
   <LayoutGuest>
     <div class="loginForm flex items-center justify-center">
-      <center>
-        <div class="flex items-center justify-center">
-          <div id="login" class="md:w-[60%] w-[120%]">
-            <el-form
-              label-position="top"
-              label-width="100px"
-              :model="loginForm"
-              size="large"
-              :rules="rules"
-              ref="baseForm"
-              class="mt-5"
-            >
-              <el-form-item prop="user">
-                <el-input v-model="loginForm.user" :prefix-icon="User">
-                </el-input>
-              </el-form-item>
-              <el-form-item prop="password">
-                <el-input
-                  :prefix-icon="Lock"
-                  v-model="loginForm.password"
-                  type="password"
-                  @keyup.enter="submit"
-                />
-              </el-form-item>
-            </el-form>
-            <el-button type="primary" class="w-full" @click="submit"
-              >Login</el-button
-            >
-          </div>
-          <!-- end login -->
-          <div class="w-[60%] md:block hidden">
-            <img
-              class="imgLogo"
-              src="/img/ATS_Logo_White_TransResizw.png"
-              alt=""
-            />
-          </div>
+      <div class="flex items-center justify-center gap-x-4">
+        <div id="login" class="md:w-[60%] w-[120%]">
+          <el-form
+            label-position="top"
+            label-width="100px"
+            :model="loginForm"
+            size="large"
+            :rules="rules"
+            ref="baseForm"
+            class="mt-5"
+          >
+            <el-form-item prop="user">
+              <el-input v-model="loginForm.user" :prefix-icon="User">
+              </el-input>
+            </el-form-item>
+            <el-form-item prop="password">
+              <el-input
+                :prefix-icon="Lock"
+                v-model="loginForm.password"
+                type="password"
+                @keyup.enter="submit"
+              />
+            </el-form-item>
+          </el-form>
+          <el-button type="primary" class="w-full" @click="submit"
+            >Login</el-button
+          >
         </div>
-      </center>
+        <!-- end login -->
+        <div class="w-[60%] md:block hidden">
+          <img
+            class="imgLogo"
+            src="/img/ATS_Logo_White_TransResizw.png"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
   </LayoutGuest>
 </template>
 <style scoped>
+/* login form */
+
+:deep(.el-input__wrapper) {
+  background-color: white;
+}
+:deep(.el-input__inner) {
+  color: black;
+}
 /*===transition=== */
 .nested-enter-active,
 .nested-leave-active {
@@ -242,5 +247,6 @@ const openNotification = (err) => {
   position: relative;
   height: 100%;
 }
+
 /* backdrop css */
 </style>

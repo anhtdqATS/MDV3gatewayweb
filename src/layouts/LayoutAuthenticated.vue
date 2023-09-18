@@ -7,7 +7,6 @@ import menuNavBar from "@/menuNavBar.js";
 import { useMainStore } from "@/stores/main.js";
 import { useStyleStore } from "@/stores/style.js";
 import BaseIcon from "@/components/BaseIcon.vue";
-import FormControl from "@/components/FormControl.vue";
 import NavBar from "@/components/NavBar.vue";
 import NavBarItemPlain from "@/components/NavBarItemPlain.vue";
 import AsideMenu from "@/components/AsideMenu.vue";
@@ -45,21 +44,21 @@ router.beforeEach(() => {
 const darkMode = computed(() => {
   return useStyleStore().darkMode;
 });
-const r = document.querySelector(":root");
+// const r = document.querySelector(":root");
 
-const setElementPlusDarkMode = () => {
-  if (darkMode.value) {
-    r.style.setProperty("--bg-node-tree", "#141c2f");
-    r.style.setProperty("--el-bg-color", "#141c2f");
-  } else {
-    r.style.setProperty("--bg-node-tree", "#f5f7fa");
-    r.style.setProperty("--el-bg-color", "#fff");
-  }
-};
-setElementPlusDarkMode();
-watch(darkMode, () => {
-  setElementPlusDarkMode();
-});
+// const setElementPlusDarkMode = () => {
+//   if (darkMode.value) {
+//     r.style.setProperty("--bg-node-tree", "#141c2f");
+//     r.style.setProperty("--el-bg-color", "#141c2f");
+//   } else {
+//     r.style.setProperty("--bg-node-tree", "#f5f7fa");
+//     r.style.setProperty("--el-bg-color", "#fff");
+//   }
+// };
+// setElementPlusDarkMode();
+// watch(darkMode, () => {
+//   setElementPlusDarkMode();
+// });
 const removeSessions = () => {
   localStorage.removeItem("dataLogin");
   mainApi.removeAuthorizationHeaders();
@@ -129,6 +128,7 @@ const Ping = () => {
     .ping()
     .then(() => {})
     .catch((err) => {
+      console.log(err);
       if (err.response.status === 401) {
         removeSessions();
       }
@@ -174,14 +174,14 @@ onUnmounted(() => clearInterval(isTimer));
         >
           <BaseIcon :path="mdiMenu" size="24" />
         </NavBarItemPlain>
-        <NavBarItemPlain use-margin>
-          <!-- <FormControl
+        <!-- <NavBarItemPlain use-margin>
+          <FormControl
             placeholder="Search (ctrl+k)"
             ctrl-k-focus
             transparent
             borderless
-          /> -->
-        </NavBarItemPlain>
+          />
+        </NavBarItemPlain> -->
       </NavBar>
       <AsideMenu
         :is-aside-mobile-expanded="isAsideMobileExpanded"
@@ -191,9 +191,17 @@ onUnmounted(() => clearInterval(isTimer));
         @aside-lg-close-click="isAsideLgActive = false"
       />
       <Loading v-if="useMainStore().isLoading"></Loading>
-
-      <slot v-else />
-      <FooterBar>
+      <div
+        :class="styleStore.darkMode ? 'dark' : styleStore.bgContentStyle"
+        id="content"
+        style="min-height: calc(100vh - 7rem)"
+        v-else
+      >
+        <!-- Nội dung chính -->
+        <slot></slot>
+      </div>
+      <!-- <slot class="h-full" v-else /> -->
+      <FooterBar class="flex-none mt-4 pb-3 pt-0 bottom-0">
         Get more with
         <a
           href="https://ats.com.vn/contact/"
@@ -205,3 +213,9 @@ onUnmounted(() => clearInterval(isTimer));
     </div>
   </div>
 </template>
+<style scoped>
+.content {
+  /* flex: 1; */
+  margin-bottom: 50px; /* Để tạo khoảng trống phía dưới cho FooterBar */
+}
+</style>

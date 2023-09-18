@@ -165,13 +165,13 @@ const router = createRouter({
   },
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, from) => {
   var dataLogin = localStorage.getItem("dataLogin");
-  if (!dataLogin && to.name !== "login") {
+  if ((!dataLogin || dataLogin === null) && to.name !== "login") {
     return { name: "login" };
+  } else {
+    useMainStore().setLoading(true);
   }
-  useMainStore().setLoading(true);
-  next();
 });
 
 router.afterEach((to, from) => {

@@ -9,4 +9,7 @@ export default {
   setGatewayInfo(payload) {
     return repository.post(`${resource}`, payload);
   },
+  getLicenseInfo(payload) {
+    return repository.post(`${resource}`, payload);
+  },
 };

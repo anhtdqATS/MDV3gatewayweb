@@ -55,7 +55,7 @@ const form = ref({
   tcpServer: {
     endPoints: [
       {
-        address: "",
+        address: "0.0.0.0",
         allow: [],
         port: 0,
         receiveTimeout: 0,
@@ -97,7 +97,7 @@ const handleEdit = (index, data) => {
   if (data.tcpServer.endPoints.length === 0) {
     form.value.tcpServer.endPoints = [
       {
-        address: "",
+        address: "0.0.0.0",
         allow: [],
         port: 0,
         receiveTimeout: 0,

@@ -15,6 +15,7 @@ import {
   mdiSignalCellular2,
   mdiLan,
   mdiCogOutline,
+  mdiInformationOutline,
 } from "@mdi/js";
 
 export default [
@@ -120,6 +121,23 @@ export default [
         permissions: ["admin", "engineer"],
         to: "/update-firmware",
         label: "Update Firmware",
+      },
+    ],
+  },
+  {
+    permissions: ["admin", "engineer"],
+    label: "Information",
+    icon: mdiInformationOutline,
+    menu: [
+      {
+        permissions: ["admin", "engineer"],
+        to: "/About",
+        label: "About",
+      },
+      {
+        permissions: ["admin", "engineer"],
+        to: "/license",
+        label: "License",
       },
     ],
   },
