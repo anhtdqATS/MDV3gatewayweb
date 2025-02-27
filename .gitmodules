@@ -16,3 +16,6 @@
 [submodule "src/module/MDV3"]
 	path = src/module/MDV3
 	url = git@github.com:anhtdqATS/MDV3.git
+[submodule "src/module/RecordeModule"]
+	path = src/module/RecordeModule
+	url = git@github.com:anhtdqATS/RecordeModule.git

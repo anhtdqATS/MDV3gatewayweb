@@ -16,6 +16,7 @@ import {
   mdiLan,
   mdiCogOutline,
   mdiInformationOutline,
+  mdiChartMultiple,
 } from "@mdi/js";
 
 export default [
@@ -36,6 +37,12 @@ export default [
     to: "/mapping",
     label: "Mapping",
     icon: mdiLanConnect,
+  },
+  {
+    permissions: ["admin", "engineer"],
+    to: "/chartViewer",
+    label: "Chart Viewer",
+    icon: mdiChartMultiple,
   },
   {
     permissions: ["admin", "engineer"],

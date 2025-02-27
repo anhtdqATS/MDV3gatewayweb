@@ -12,6 +12,16 @@ const routes = [
     name: "login",
     component: Login,
   },
+  // {
+  //   // Document title tag
+  //   // We combine it with defaultDocumentTitle set in `src/main.js` on router.afterEach hook
+  //   meta: {
+  //     title: "Dashboard",
+  //   },
+  //   path: "/dashboard",
+  //   name: "dashboard",
+  //   component: () => import("@/module/MDV3/dashboard/view/DashboardView.vue"),
+  // },
   {
     // Document title tag
     // We combine it with defaultDocumentTitle set in `src/main.js` on router.afterEach hook
@@ -20,7 +30,7 @@ const routes = [
     },
     path: "/dashboard",
     name: "dashboard",
-    component: () => import("@/module/MDV3/dashboard/view/DashboardView.vue"),
+    component: () => import("@/view/home.vue"),
   },
   {
     meta: {
@@ -154,6 +164,14 @@ const routes = [
     path: "/license",
     name: "license",
     component: () => import("@/module/Info/view/LicenseView.vue"),
+  },
+  {
+    meta: {
+      title: "ChartViewer",
+    },
+    path: "/chartViewer",
+    name: "ChartViewer",
+    component: () => import("@/module/RecordeModule/view/recorder.vue"),
   },
 ];
 

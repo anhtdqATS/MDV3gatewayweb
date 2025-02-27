@@ -64,6 +64,17 @@ const mainStore = useMainStore();
               </template>
               {{ mainStore.gatewayInfo.version }}
             </el-descriptions-item>
+            <el-descriptions-item align="center">
+              <template #label>
+                <div class="cell-item">
+                  <el-icon :style="iconStyle">
+                    <office-building />
+                  </el-icon>
+                  Web Version
+                </div>
+              </template>
+              20250225_B1
+            </el-descriptions-item>
           </el-descriptions>
         </div>
       </CardBox>
